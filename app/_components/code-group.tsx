@@ -1,13 +1,11 @@
-'use client';
-
+import CodeRender from '@/app/_components/code-render';
 import { Tab } from '@headlessui/react';
-import React from 'react';
 
-export default function CodeGroup({
+export default async function CodeGroup({
   items,
 }: {
   items: {
-    fileName: string;
+    filePath: string;
     code?: string;
   }[];
 }) {
@@ -15,12 +13,12 @@ export default function CodeGroup({
     <Tab.Group>
       <Tab.List>
         {items.map((item) => (
-          <Tab key={item.fileName}>{item.fileName}</Tab>
+          <Tab key={item.filePath}>{item.filePath}</Tab>
         ))}
       </Tab.List>
       <Tab.Panels>
         {items.map((item) => (
-          <Tab.Panel key={item.fileName}>{item.code}</Tab.Panel>
+          <Tab.Panel key={item.filePath}>ss</Tab.Panel>
         ))}
       </Tab.Panels>
     </Tab.Group>

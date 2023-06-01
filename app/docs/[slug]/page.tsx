@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div>
+    <div className="prose max-w-full dark:prose-invert">
       <MdxComponent code={post.body.code} />
     </div>
   );

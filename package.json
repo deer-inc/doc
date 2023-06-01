@@ -44,7 +44,9 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.6",
+    "rehype-slug": "^5.1.0",
     "remark-code-import": "^1.2.0",
     "remark-gfm": "^3.0.1"
   }
