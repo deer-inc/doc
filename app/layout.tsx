@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import './globals.css';
 import ThemeProvider from './_components/theme-provider';
+import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +30,22 @@ export default function RootLayout({
         <link rel="mask-icon" href="/icon.svg" color="#000000" />
       </head>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <div className="container max-w-4xl flex gap-20">
+            <aside className="w-[240px]">
+              <ul>
+                <li>
+                  <Link href="/">Home</Link>
+                </li>
+                <li>
+                  <Link href="/docs/installation">Installation</Link>
+                </li>
+              </ul>
+            </aside>
+            <main className="flex-1">{children}</main>
+          </div>
+        </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
