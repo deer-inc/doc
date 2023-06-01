@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="prose max-w-full dark:prose-invert">
+    <div className="prose prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent">
       <MdxComponent code={post.body.code} />
     </div>
   );

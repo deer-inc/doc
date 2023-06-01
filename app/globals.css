@@ -68,6 +68,14 @@
   --radius: 0.5rem;
 }
 
+.light *[data-theme='darkCode'] {
+  display: none;
+}
+
+.dark *[data-theme='lightCode'] {
+  display: none;
+}
+
 @layer base {
   * {
     @apply border-border;
