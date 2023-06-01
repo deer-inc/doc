@@ -3,6 +3,7 @@ import './globals.css';
 import ThemeProvider from './_components/theme-provider';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
+import SideNav from '@/app/_components/sidenav';
 
 export const metadata: Metadata = {
   title: {
@@ -31,18 +32,18 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <div className="container max-w-4xl flex gap-20">
+          <div className="container max-w-4xl flex gap-10 mt-10">
             <aside className="w-[240px]">
-              <ul>
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <Link href="/docs/installation">Installation</Link>
-                </li>
-              </ul>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-4 font-bold text-3xl mb-6"
+              >
+                <img src="/logo.svg" className="dark:invert h-12" alt="" />
+                Doc
+              </Link>
+              <SideNav />
             </aside>
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 overflow-hidden">{children}</main>
           </div>
         </ThemeProvider>
         <Analytics />

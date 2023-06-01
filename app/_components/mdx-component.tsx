@@ -21,17 +21,16 @@ const mdxComponents: MDXComponents = {
           className="text-sm border border-t rounded-t-md px-4 py-3"
         />
       );
-    } else if ('data-rehype-pretty-code-fragment' in props) {
-      return (
-        <div
-          {...props}
-          className="prose-pre:mt-0 prose-pre:border-t-0 prose-pre:rounded-t-none"
-        />
-      );
     } else {
       return <div {...props} />;
     }
   },
+  pre: (props) => (
+    <pre
+      {...props}
+      className="[[data-rehype-pretty-code-title]+&]:mt-0 [[data-rehype-pretty-code-title]+&]:border-t-0 [[data-rehype-pretty-code-title]+&]:rounded-t-none"
+    />
+  ),
   // @ts-expect-error Server Component
   CodeGroup: ({ items }) => <CodeGroup items={items} />,
   Preview: (props) => <Preview {...props} />,

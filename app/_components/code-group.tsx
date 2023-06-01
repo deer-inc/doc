@@ -45,8 +45,17 @@ async function getPrettyCode(code: string, lang?: string) {
     themes: ['min-dark', 'min-light'],
     langs: ['js', 'ts', 'tsx', 'css', 'html', 'json', 'bash', 'md'],
   });
-  const tokens = highlighter.codeToThemedTokens(code, lang, 'min-dark');
-  return shiki.renderToHtml(tokens, {
+  const darkTokens = highlighter.codeToThemedTokens(code, lang, 'min-dark');
+  const dark = shiki.renderToHtml(darkTokens, {
     bg: '_',
   });
+  const lightTokens = highlighter.codeToThemedTokens(code, lang, 'min-light');
+  const light = shiki.renderToHtml(lightTokens, {
+    bg: '_',
+  });
+
+  return {
+    light,
+    dark,
+  };
 }
