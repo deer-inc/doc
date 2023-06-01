@@ -1,10 +1,10 @@
 export const DocMap = [
   {
-    title: 'UI',
+    title: 'ガイド',
     items: ['installation', 'installation', 'installation'],
   },
   {
-    title: 'UI',
+    title: 'サンプルコード',
     items: ['installation'],
   },
 ];

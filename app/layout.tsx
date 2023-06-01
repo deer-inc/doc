@@ -36,7 +36,7 @@ export default function RootLayout({
             <aside className="w-[240px]">
               <Link
                 href="/"
-                className="inline-flex items-center gap-4 font-bold text-3xl mb-6"
+                className="inline-flex items-center gap-4 font-bold text-3xl mb-10"
               >
                 <img src="/logo.svg" className="dark:invert h-12" alt="" />
                 Doc
