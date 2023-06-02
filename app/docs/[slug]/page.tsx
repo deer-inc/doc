@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="prose prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent">
+    <div className="prose prose-sm prose-pre:p-0 prose-code:text-sm prose-pre>code:grid prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent">
       <p className="italic text-muted-foreground text-right text-sm">
         {format(new Date(post.date), 'yyyy年MM月dd日更新')}
       </p>

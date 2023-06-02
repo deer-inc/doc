@@ -33,8 +33,10 @@
     "next": "13.4.4",
     "next-contentlayer": "^0.3.3",
     "next-themes": "^0.2.1",
+    "open-graph-scraper": "^6.0.1",
     "postcss": "8.4.24",
     "react": "18.2.0",
+    "react-children-utilities": "^2.9.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "shiki": "^0.14.2",
@@ -45,6 +47,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@types/react-copy-to-clipboard": "^5.0.4",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.6",
     "rehype-slug": "^5.1.0",

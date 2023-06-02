@@ -87,3 +87,7 @@
       'Hiragino Sans', Meiryo, sans-serif;
   }
 }
+
+pre > div > code {
+  @apply grid !px-3 !py-2;
+}

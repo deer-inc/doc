@@ -6,6 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './mdx-components.tsx',
+    './contentlayer.config.ts',
   ],
   theme: {
     container: {

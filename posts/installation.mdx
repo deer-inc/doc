@@ -3,26 +3,31 @@ title: 環境構築
 date: 2023-06-01
 ---
 
-<Preview>
-  <ToggleTheme />
-</Preview>
+ストレージ効率が圧倒的に良いので pnpm で環境構築しましょう。
 
-<CodeGroup
-  items={[
-    {
-      filePath: 'app/_previews/toggle-theme.tsx',
-    },
-    {
-      filePath: 'app/_previews/toggle-theme.tsx',
-    },
-  ]}
-/>
+```bash
+pnpm dlx create-next-app@latest
+```
 
-```tsx {1, 3} title="xxx.tsx"
-const demo = 111;
-const demo = 111;
-const demo = 111;
+質問は`/srs` の質問以外 `yes`
 
-const demo = 111;
-const demo = 111;
+```bash
+✔ Would you like to use TypeScript with this project? … Yes
+✔ Would you like to use ESLint with this project? … Yes
+✔ Would you like to use Tailwind CSS with this project? … Yes
+✔ Would you like to use `src/` directory with this project? … No
+✔ Use App Router (recommended)? … Yes
+✔ Would you like to customize the default import alias? … Yes
+```
+
+自分やメンバーがうっかり `npm` や `yarn` を使わないよう、 `package.json` で制限。
+
+```json {4} showLineNumbers title=package.json
+{
+  // ...
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  }
+  // ...
+}
 ```

@@ -4,6 +4,7 @@ import ThemeProvider from './_components/theme-provider';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import SideNav from '@/app/_components/sidenav';
+import ToggleThemeButton from '@/app/_components/toggle-theme';
 
 export const metadata: Metadata = {
   title: {
@@ -34,13 +35,16 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="container max-w-4xl flex gap-10 mt-10">
             <aside className="w-[240px]">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-4 font-bold text-3xl mb-10"
-              >
-                <img src="/logo.svg" className="dark:invert h-12" alt="" />
-                Doc
-              </Link>
+              <div className="flex items-center justify-between mb-10">
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-4 font-bold text-3xl"
+                >
+                  <img src="/logo.svg" className="dark:invert h-12" alt="" />
+                  Doc
+                </Link>
+                <ToggleThemeButton />
+              </div>
               <SideNav />
             </aside>
             <main className="flex-1 overflow-hidden">{children}</main>

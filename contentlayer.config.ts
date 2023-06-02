@@ -5,37 +5,6 @@ import { codeImport } from 'remark-code-import';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 
-type CodeTheme =
-  | 'css-variables'
-  | 'dark-plus'
-  | 'dracula-soft'
-  | 'dracula'
-  | 'github-dark-dimmed'
-  | 'github-dark'
-  | 'github-light'
-  | 'hc_light'
-  | 'light-plus'
-  | 'material-theme-darker'
-  | 'material-theme-lighter'
-  | 'material-theme-ocean'
-  | 'material-theme-palenight'
-  | 'material-theme'
-  | 'min-dark'
-  | 'min-light'
-  | 'monokai'
-  | 'nord'
-  | 'one-dark-pro'
-  | 'poimandres'
-  | 'rose-pine-dawn'
-  | 'rose-pine-moon'
-  | 'rose-pine'
-  | 'slack-dark'
-  | 'slack-ochin'
-  | 'solarized-dark'
-  | 'solarized-light'
-  | 'vitesse-dark'
-  | 'vitesse-light';
-
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: `**/*.mdx`,
@@ -53,17 +22,26 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-const shikiOptions: {
-  theme: {
-    [key in string]: CodeTheme;
-  };
-  keepBackground: boolean;
-} = {
+const shikiOptions: Partial<Options> = {
   theme: {
     darkCode: 'min-dark',
     lightCode: 'min-light',
   },
   keepBackground: false,
+
+  onVisitLine(node) {
+    // Prevent lines from collapsing in `display: grid` mode, and
+    // allow empty lines to be copy/pasted
+    if (node.children.length === 0) {
+      node.children = [{ type: 'text', value: ' ' }];
+    }
+  },
+  onVisitHighlightedLine(node) {
+    node.properties.className.push('bg-muted');
+  },
+  onVisitHighlightedWord(node) {
+    node.properties.className = ['bg-muted'];
+  },
 };
 
 export default makeSource({
