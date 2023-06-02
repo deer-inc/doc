@@ -99,3 +99,11 @@ pre > code {
 pre > code > * {
   @apply pr-3;
 }
+
+.line:empty:after {
+  content: ' ';
+}
+
+.line:empty:last-child {
+  display: none;
+}

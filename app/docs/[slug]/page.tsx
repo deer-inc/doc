@@ -1,3 +1,4 @@
+import LinkTitle from '@/app/_components/link-title';
 import MdxComponent from '@/app/_components/mdx-component';
 import { allDocs } from 'contentlayer/generated';
 import { format } from 'date-fns';
@@ -17,12 +18,26 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="prose prose-img:rounded-md prose-sm prose-code:text-sm prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent">
+    <div className="prose prose-h2:mt-16 prose-img:rounded-md prose-sm prose-code:text-sm prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent">
       <p className="italic text-muted-foreground text-right text-sm">
         {format(new Date(doc.date), 'yyyy年MM月dd日更新')}
       </p>
       <h1>{doc.title}</h1>
       <MdxComponent code={doc.body.code} />
+
+      {Boolean(doc.links?.length) && (
+        <div>
+          <h2>参考リンク</h2>
+          <ul>
+            {doc.links?.map((link) => (
+              <li key={link}>
+                {/* @ts-expect-error Server Component */}
+                <LinkTitle url={link} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

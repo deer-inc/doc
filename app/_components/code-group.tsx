@@ -49,6 +49,7 @@ async function getPrettyCode(code: string, lang?: string) {
   const dark = shiki.renderToHtml(darkTokens, {
     bg: '_',
   });
+
   const lightTokens = highlighter.codeToThemedTokens(code, lang, 'min-light');
   const light = shiki.renderToHtml(lightTokens, {
     bg: '_',
