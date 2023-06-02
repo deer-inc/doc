@@ -2,6 +2,7 @@ import path from 'path';
 import shiki from 'shiki';
 import fs from 'fs';
 import CodeTabBlock from '@/app/_components/code-tab-block';
+import { ShikiConfig } from '@/doc.config';
 
 export default async function CodeGroup({
   items,
@@ -46,15 +47,23 @@ const getContentFromPath = (filePath: string) => {
 
 async function getPrettyCode(code: string, lang?: string) {
   const highlighter = await shiki.getHighlighter({
-    themes: ['min-dark', 'min-light'],
-    langs: ['js', 'ts', 'tsx', 'css', 'html', 'json', 'bash', 'md'],
+    themes: [ShikiConfig.darkTheme, ShikiConfig.lightTheme],
+    langs: ShikiConfig.langs as any,
   });
-  const darkTokens = highlighter.codeToThemedTokens(code, lang, 'min-dark');
+  const darkTokens = highlighter.codeToThemedTokens(
+    code,
+    lang,
+    ShikiConfig.darkTheme
+  );
   const dark = shiki.renderToHtml(darkTokens, {
     bg: '_',
   });
 
-  const lightTokens = highlighter.codeToThemedTokens(code, lang, 'min-light');
+  const lightTokens = highlighter.codeToThemedTokens(
+    code,
+    lang,
+    ShikiConfig.lightTheme
+  );
   const light = shiki.renderToHtml(lightTokens, {
     bg: '_',
   });
