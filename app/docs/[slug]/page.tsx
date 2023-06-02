@@ -19,9 +19,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div className="prose prose-h2:mt-16 prose-img:rounded-md prose-sm prose-code:text-sm prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent">
-      <p className="italic text-muted-foreground text-right text-sm">
-        {format(new Date(doc.date), 'yyyy年MM月dd日更新')}
-      </p>
+      <div className="italic text-muted-foreground justify-end not-prose text-sm flex items-center gap-2">
+        <p>{format(new Date(doc.date), 'yyyy年MM月dd日更新')}</p>
+        <span>/</span>
+        <a
+          href={`https://github.com/deer-inc/doc/edit/main/docs/${doc._id}`}
+          target="_blank"
+        >
+          編集
+        </a>
+      </div>
       <h1>{doc.title}</h1>
       <MdxComponent code={doc.body.code} />
 
