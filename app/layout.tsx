@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import SideNav from '@/app/_components/sidenav';
 import ToggleThemeButton from '@/app/_components/toggle-theme';
+import { SiTwitter } from '@icons-pack/react-simple-icons';
 
 export const metadata: Metadata = {
   title: {
@@ -38,9 +39,9 @@ export default function RootLayout({
               <div className="flex items-center justify-between mb-10">
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-4 font-bold text-3xl"
+                  className="inline-flex items-center gap-4 font-bold text-2xl"
                 >
-                  <img src="/logo.svg" className="dark:invert h-12" alt="" />
+                  <img src="/logo.svg" className="dark:invert h-10" alt="" />
                   Doc
                 </Link>
                 <ToggleThemeButton />
@@ -49,6 +50,17 @@ export default function RootLayout({
             </aside>
             <main className="flex-1 overflow-hidden">{children}</main>
           </div>
+          <footer className="border-t container py-6 text-muted-foreground text-center text-sm mt-20">
+            <p>
+              <a
+                href="http://twitter.com/d151005"
+                target="_blank"
+                className="hover:text-foreground transition"
+              >
+                <SiTwitter size={20} className="inline" />
+              </a>
+            </p>
+          </footer>
         </ThemeProvider>
         <Analytics />
       </body>

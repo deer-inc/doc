@@ -1,7 +1,7 @@
 export const DocMap = [
   {
     title: 'ドキュメント',
-    items: ['installation', 'favicon', 'darkmode'],
+    items: ['installation', 'favicon', 'darkmode', 'email'],
   },
   {
     title: 'コンポーネント',
@@ -12,5 +12,5 @@ export const DocMap = [
 export const ShikiConfig = {
   darkTheme: 'min-dark',
   lightTheme: 'min-light',
-  langs: ['js', 'ts', 'tsx', 'css', 'html', 'json', 'bash', 'md', 'mdx'],
+  langs: ['js', 'ts', 'tsx', 'css', 'html', 'json', 'bash', 'md', 'mdx', 'ini'],
 };

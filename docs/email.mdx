@@ -1,0 +1,37 @@
+---
+title: メール送信
+date: 2023-06-02
+links:
+  - https://resend.com/home
+  - https://react.email
+---
+
+[Resend](https://resend.com/docs/send-with-nextjs) を使う。
+
+```bash title="インストール"
+pnpm add resend
+```
+
+```ini title=".env.local"
+RESEND_API_KEY=xxx
+EMAIL_FROM=xxx # 送信元メールアドレス（オプション）
+EMAIL_TO=xxx # 送信先メールアドレス（オプション）
+```
+
+メールテンプレートを作成
+
+<CodeGroup items={[{ filePath: 'app/_email-templates/email-template.tsx' }]} />
+
+送信用 API を作成
+
+<CodeGroup items={[{ filePath: 'app/api/send/route.ts' }]} />
+
+送信元のドメインを設定画面から取得した情報でドメインサービスの DNS 設定を行い、Verify ボタンをクリック。正常に設定が終わればメールが送れるようになる。DNS 設定後しばらく待つ必要がある点に注意。
+
+![](/docs/email-domain.png)
+
+メール送信
+
+<CodeGroup items={[{ filePath: 'app/_previews/send-email.tsx' }]} />
+
+メールテンプレートは [React Email](https://react.email) を推奨。
