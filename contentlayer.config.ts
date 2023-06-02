@@ -4,9 +4,10 @@ import rehypePrettyCode, { Options } from 'rehype-pretty-code';
 import { codeImport } from 'remark-code-import';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
+import { getHighlighter } from 'shiki';
 
-export const Post = defineDocumentType(() => ({
-  name: 'Post',
+export const Doc = defineDocumentType(() => ({
+  name: 'Doc',
   filePathPattern: `**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -17,7 +18,7 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: 'string',
-      resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+      resolve: (doc) => `/docs/${doc._raw.flattenedPath}`,
     },
   },
 }));
@@ -42,11 +43,17 @@ const shikiOptions: Partial<Options> = {
   onVisitHighlightedWord(node) {
     node.properties.className = ['bg-muted'];
   },
+
+  getHighlighter: (options: any) =>
+    getHighlighter({
+      ...options,
+      langs: ['tsx', 'mdx', 'md', 'json', 'xml', 'css'],
+    }),
 };
 
 export default makeSource({
-  contentDirPath: 'posts',
-  documentTypes: [Post],
+  contentDirPath: 'docs',
+  documentTypes: [Doc],
   mdx: {
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [

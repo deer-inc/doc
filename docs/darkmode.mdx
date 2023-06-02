@@ -1,0 +1,92 @@
+---
+title: ダークモード対応
+date: 2023-06-01
+---
+
+## カラーパレットの定義
+
+CSS 変数を使ってライトモード、ダークモードの色を定義する。
+
+```css title="globals.css""
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 47.4% 11.2%;
+  /* ... */
+}
+
+.dark {
+  --background: 0 0% 100%;
+  --foreground: 222.2 47.4% 11.2%;
+  /* ... */
+}
+```
+
+定義した色を Tailwind CSS に登録する。ついでに `dakMode: ['class']` を設定する。
+
+```js {3,9-10} title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ['class'],
+  // ...
+  theme: {
+    // ...
+    extend: {
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        // ...
+      },
+    },
+  },
+  // ...
+};
+```
+
+定義が大変なので [shadcn/ui](https://ui.shadcn.com/docs/installation) で定義&Tailwind CSS 登録をまとめて行った上で適宜調整するアプローチを推奨。
+
+```bash
+pnpm dlx shadcn-ui init
+```
+
+## カラーモード切り替えの実装
+
+[next-themes](https://github.com/pacocoursey/next-themes)を利用。
+
+```bash
+pnpm add next-themes
+```
+
+導入は[公式ドキュメントのガイド](https://github.com/pacocoursey/next-themes#with-app)に従う。App Router を使用する場合、このガイドに従わないと正しく動作しないので注意。
+
+カラーモード切り替えボタンはクライアントコンポーネントかつ、ブラウザロード後にレンダリングしないとエラーが出るなどトラップが多い。[公式ドキュメント](https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch)に沿って、以下のように実装する。
+
+```tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+
+function ThemeSwitch() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return (
+    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+      <option value="system">System</option>
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+    </select>
+  );
+}
+
+export default ThemeSwitch;
+```

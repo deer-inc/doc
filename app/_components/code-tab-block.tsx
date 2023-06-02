@@ -24,7 +24,7 @@ export default function CodeTabBlock({
             <Tab
               className={({ selected }) =>
                 cn(
-                  'px-4 py-3 text-sm focus:outline-none',
+                  'px-3 py-2 text-sm focus:outline-none',
                   !selected && 'text-muted-foreground'
                 )
               }
@@ -37,7 +37,7 @@ export default function CodeTabBlock({
         <Tab.Panels>
           {items.map((item) => (
             <Tab.Panel key={item.filePath}>
-              <div className="prose-pre:mt-0 prose-pre:border-t-0 prose-pre:rounded-t-none">
+              <div className="prose-pre:mt-0 prose-pre:border-t-0 relative prose-pre:rounded-t-none">
                 <div
                   className="hidden dark:block"
                   dangerouslySetInnerHTML={{ __html: item.code.dark }}

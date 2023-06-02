@@ -1,0 +1,33 @@
+---
+title: 環境構築
+date: 2023-06-01
+---
+
+ストレージ効率が圧倒的に良いので [pnpm](https://pnpm.io) を使う。
+
+```bash
+pnpm dlx create-next-app@latest
+```
+
+質問は`/srs` の質問以外 `yes` で回答。
+
+```
+✔ Would you like to use TypeScript with this project? … Yes
+✔ Would you like to use ESLint with this project? … Yes
+✔ Would you like to use Tailwind CSS with this project? … Yes
+✔ Would you like to use `src/` directory with this project? … No
+✔ Use App Router (recommended)? … Yes
+✔ Would you like to customize the default import alias? … Yes
+```
+
+自分やメンバーがうっかり `npm` や `yarn` を使わないよう、 `package.json` で制限。
+
+```json {4} title="package.json"
+{
+  // ...
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  }
+  // ...
+}
+```

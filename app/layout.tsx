@@ -33,7 +33,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <div className="container max-w-4xl flex gap-10 mt-10">
+          <div className="container max-w-4xl flex gap-10 my-10">
             <aside className="w-[240px]">
               <div className="flex items-center justify-between mb-10">
                 <Link

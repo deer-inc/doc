@@ -1,0 +1,36 @@
+---
+title: Favicon
+date: 2023-06-01
+---
+
+![](/docs/favicon.png)
+
+1. `/app` に `icon.svg` を設置
+2. Safari 用に head タグを追加
+
+```tsx {2-4} title="/app/layout.tsx"
+<html>
+  <head>
+    <link rel="mask-icon" href="/icon.svg" color="#000000" />
+  </head>
+  <body>
+```
+
+3. SVG を編集してダークモード対応
+
+```xml {2-12} tilte="icon.svg"
+<svg xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      fill: black; <!-- ライトモード時のカラー -->
+    }
+
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: white; <!-- ダークモード時のカラー -->
+      }
+    }
+  </style>
+  <path d="..." />
+</svg>
+```

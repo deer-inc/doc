@@ -1,6 +1,6 @@
 'use client';
 
-import { allPosts } from '@/.contentlayer/generated';
+import { allDocs } from '@/.contentlayer/generated';
 import { DocMap } from '@/doc.config';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -23,10 +23,10 @@ export default function SideNav() {
                   className={cn(
                     'border-l px-4 py-1 block text-sm',
                     slug !== pathname.replace('/docs/', '') &&
-                      'text-muted-foreground hover:text-white'
+                      'text-muted-foreground hover:text-foreground'
                   )}
                 >
-                  {allPosts.find((p) => p._id === slug + '.mdx')?.title}
+                  {allDocs.find((doc) => doc._id === slug + '.mdx')?.title}
                 </Link>
               </li>
             );

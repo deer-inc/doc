@@ -23,7 +23,7 @@ export default function CodeCopy({ text }: { text: string }) {
         }, 1500);
       }}
     >
-      <button className="rounded bg-muted top-[7px] absolute right-2 w-6 h-6 border">
+      <button className="rounded bg-muted top-[6px] absolute right-2 w-6 h-6 border">
         <span className={cn(iconClass, copied && 'scale-0 opacity-0')}>
           <ClipboardIcon className="block w-full h-full scale-100" />
         </span>

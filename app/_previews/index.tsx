@@ -1,5 +1,7 @@
-import ToggleTheme from '@/app/_previews/toggle-theme';
+import ToggleThemeDemo from '@/app/_previews/toggle-theme';
+import LinkPreviewDemo from '@/app/_previews/link-preview';
 
 export const previews = {
-  ToggleTheme,
+  ToggleThemeDemo,
+  LinkPreviewDemo,
 };

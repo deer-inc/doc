@@ -88,6 +88,14 @@
   }
 }
 
-pre > div > code {
-  @apply grid !px-3 !py-2;
+.line {
+  width: 100%;
+}
+
+pre > code {
+  display: grid;
+}
+
+pre > code > * {
+  @apply pr-3;
 }
