@@ -1,11 +1,7 @@
-import { Metadata } from 'next';
-import './globals.css';
-import ThemeProvider from './_components/theme-provider';
-import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
-import SideNav from '@/app/_components/sidenav';
-import ToggleThemeButton from '@/app/_components/toggle-theme';
-import { SiTwitter } from '@icons-pack/react-simple-icons';
+import { Metadata } from 'next';
+import ThemeProvider from './_components/theme-provider';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: {
@@ -33,35 +29,7 @@ export default function RootLayout({
         <link rel="mask-icon" href="/icon.svg" color="#000000" />
       </head>
       <body>
-        <ThemeProvider>
-          <div className="container max-w-4xl flex gap-10 my-10">
-            <aside className="w-[240px]">
-              <div className="flex items-center justify-between mb-10">
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-4 font-bold text-2xl"
-                >
-                  <img src="/logo.svg" className="dark:invert h-10" alt="" />
-                  Doc
-                </Link>
-                <ToggleThemeButton />
-              </div>
-              <SideNav />
-            </aside>
-            <main className="flex-1 overflow-hidden">{children}</main>
-          </div>
-          <footer className="border-t container py-6 text-muted-foreground text-center text-sm mt-20">
-            <p>
-              <a
-                href="http://twitter.com/d151005"
-                target="_blank"
-                className="hover:text-foreground transition"
-              >
-                <SiTwitter size={20} className="inline" />
-              </a>
-            </p>
-          </footer>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>
     </html>
