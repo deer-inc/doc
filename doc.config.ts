@@ -5,6 +5,6 @@ export const DocMap = [
   },
   {
     title: 'コンポーネント',
-    items: ['link-preview', 'toggle-theme'],
+    items: ['link-preview', 'toggle-theme', 'tweet', 'image-cropper'],
   },
 ];

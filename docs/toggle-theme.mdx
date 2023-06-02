@@ -1,20 +1,33 @@
 ---
 title: テーマスイッチ
 date: 2023-06-01
+links:
+  - https://www.npmjs.com/package/next-themes
 ---
 
 <Preview>
   <ToggleThemeDemo />
 </Preview>
 
-```tsx title="使用方法"
-<ToggleTheme />
+```bash title="インストール"
+pnpm add next-themes
 ```
 
 <CodeGroup
   items={[
     {
+      title: '使用方法',
       filePath: 'app/_previews/toggle-theme.tsx',
+    },
+    {
+      filePath: 'app/_components/toggle-theme.tsx',
+    },
+    {
+      filePath: 'app/_components/theme-provider.tsx',
+    },
+    {
+      title: 'layout.tsx',
+      filePath: 'app/_previews/theme-layout.tsx',
     },
   ]}
 />

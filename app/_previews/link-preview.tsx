@@ -1,5 +1,4 @@
 import LinkPreview from '@/app/_components/link-preview';
-import React from 'react';
 
 export default function LinkPreviewDemo() {
   return (

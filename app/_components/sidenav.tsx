@@ -21,7 +21,7 @@ export default function SideNav() {
                 <Link
                   href={`/docs/${slug}`}
                   className={cn(
-                    'border-l px-4 py-1 block text-sm',
+                    'border-l px-4 py-1.5 block text-sm',
                     slug !== pathname.replace('/docs/', '') &&
                       'text-muted-foreground hover:text-foreground'
                   )}

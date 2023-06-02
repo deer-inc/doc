@@ -1,0 +1,33 @@
+---
+title: ツイート埋め込み
+date: 2023-06-01
+links:
+  - https://www.npmjs.com/package/next-tweet
+---
+
+<Preview>
+  <TweetDemo />
+</Preview>
+
+```bash title="インストール"
+pnpm add next-tweet
+```
+
+<CodeGroup
+  items={[
+    {
+      title: '使用方法',
+      filePath: 'app/_previews/tweet.tsx',
+    },
+  ]}
+/>
+
+ツイートのスタイルは CSS 変数で調整可能。使用できる[変数一覧](https://github.com/vercel-labs/react-tweet/blob/b1866f9cb15d25743fdb7275d8b3d43c409ae1ab/packages/react-tweet/src/theme.css#L9)。
+
+```css title="globals.css"
+body .next-tweet-theme {
+  /* ツイートの文字サイズ */
+  --tweet-body-font-size: 1em;
+  --tweet-container-margin: 0;
+}
+```

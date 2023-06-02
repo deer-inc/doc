@@ -3,6 +3,7 @@
 import React from 'react';
 import { Tab } from '@headlessui/react';
 import { cn } from '@/lib/utils';
+import CodeCopy from '@/app/_components/code-copy';
 
 export default function CodeTabBlock({
   items,
@@ -10,6 +11,8 @@ export default function CodeTabBlock({
   items: {
     filePath?: string;
     lang?: string;
+    title?: string;
+    baseCode: string;
     code: {
       light: string;
       dark: string;
@@ -30,13 +33,16 @@ export default function CodeTabBlock({
               }
               key={item.filePath}
             >
-              {item.filePath?.replace('app/_previews/', '')}
+              {item.title ||
+                item.filePath
+                  ?.replace('app/_previews/', '')
+                  .replace('app/_components/', '')}
             </Tab>
           ))}
         </Tab.List>
         <Tab.Panels>
           {items.map((item) => (
-            <Tab.Panel key={item.filePath}>
+            <Tab.Panel key={item.filePath} className="relative">
               <div className="prose-pre:mt-0 prose-pre:border-t-0 relative prose-pre:rounded-t-none">
                 <div
                   className="hidden dark:block"
@@ -47,6 +53,8 @@ export default function CodeTabBlock({
                   dangerouslySetInnerHTML={{ __html: item.code.light }}
                 />
               </div>
+
+              <CodeCopy text={item.baseCode} />
             </Tab.Panel>
           ))}
         </Tab.Panels>

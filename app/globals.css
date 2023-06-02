@@ -107,3 +107,9 @@ pre > code > * {
 .line:empty:last-child {
   display: none;
 }
+
+body .next-tweet-theme {
+  /* ツイートの文字サイズ */
+  --tweet-body-font-size: 1em;
+  --tweet-container-margin: 0;
+}

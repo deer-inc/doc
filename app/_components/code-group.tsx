@@ -10,6 +10,7 @@ export default async function CodeGroup({
     filePath?: string;
     code?: string;
     lang?: string;
+    title?: string;
   }[];
 }) {
   const generateItems = items.map(async (item) => {
@@ -20,11 +21,14 @@ export default async function CodeGroup({
       return {
         filePath: item.filePath,
         code: await getPrettyCode(code, lang),
+        title: item.title,
+        baseCode: code,
         lang,
       };
     } else {
       return {
         ...item,
+        baseCode: item.code || '',
         code: await getPrettyCode(item.code!, item.lang),
       };
     }
