@@ -1,6 +1,6 @@
 import LinkTitle from '@/app/_components/link-title';
 import MdxComponent from '@/app/_components/mdx-component';
-import { siteConfig } from '@/site.config';
+import { siteConfig } from '@/config/site.config';
 import { allDocs } from 'contentlayer/generated';
 import { format } from 'date-fns';
 import { notFound } from 'next/navigation';

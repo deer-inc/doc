@@ -5,7 +5,7 @@ import { codeImport } from 'remark-code-import';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { getHighlighter } from 'shiki';
-import { shikiConfig } from './doc.config';
+import { shikiConfig } from './config/doc.config';
 
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',

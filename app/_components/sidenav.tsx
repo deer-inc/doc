@@ -1,7 +1,7 @@
 'use client';
 
 import { allDocs } from '@/.contentlayer/generated';
-import { docConfig } from '@/doc.config';
+import { docConfig } from '@/config/doc.config';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

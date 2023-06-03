@@ -2,7 +2,7 @@ import path from 'path';
 import shiki from 'shiki';
 import fs from 'fs';
 import CodeTabBlock from '@/app/_components/code-tab-block';
-import { shikiConfig } from '@/doc.config';
+import { shikiConfig } from '@/config/doc.config';
 
 export default async function CodeGroup({
   items,
