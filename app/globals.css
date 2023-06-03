@@ -109,7 +109,10 @@ pre > code > * {
 }
 
 body .next-tweet-theme {
-  /* ツイートの文字サイズ */
-  --tweet-body-font-size: 1em;
   --tweet-container-margin: 0;
+  --tweet-header-font-size: 1em;
+  --tweet-body-font-size: 1em;
+  --tweet-info-font-size: 1em;
+  --tweet-actions-font-size: 1em;
+  --tweet-replies-font-size: 1em;
 }

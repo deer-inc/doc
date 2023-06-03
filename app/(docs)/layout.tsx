@@ -10,7 +10,7 @@ export default function DocLayout({ children }: { children: React.ReactNode }) {
       <div className="md:hidden">
         <MobileNav />
       </div>
-      <div className="container max-w-4xl flex gap-10 md:my-10">
+      <div className="container flex gap-10 md:my-10">
         <aside className="w-[240px] hidden md:block">
           <div className="flex items-center justify-between mb-10">
             <Logo />

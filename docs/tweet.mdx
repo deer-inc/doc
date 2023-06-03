@@ -3,6 +3,8 @@ title: ツイート埋め込み
 date: 2023-06-01
 links:
   - https://www.npmjs.com/package/next-tweet
+tweets:
+  - '1663013387423612930'
 ---
 
 <Preview>
@@ -24,10 +26,16 @@ pnpm add next-tweet
 
 ツイートのスタイルは CSS 変数で調整可能。使用できる[変数一覧](https://github.com/vercel-labs/react-tweet/blob/b1866f9cb15d25743fdb7275d8b3d43c409ae1ab/packages/react-tweet/src/theme.css#L9)。
 
+以下おすすめの設定
+
 ```css title="globals.css"
 body .next-tweet-theme {
-  /* ツイートの文字サイズ */
-  --tweet-body-font-size: 1em;
   --tweet-container-margin: 0;
+
+  --tweet-header-font-size: 1em;
+  --tweet-body-font-size: 1em;
+  --tweet-info-font-size: 1em;
+  --tweet-actions-font-size: 1em;
+  --tweet-replies-font-size: 1em;
 }
 ```

@@ -16,6 +16,7 @@ export const Doc = defineDocumentType(() => ({
     description: { type: 'string' },
     date: { type: 'date', required: true },
     links: { type: 'list', of: { type: 'string' } },
+    tweets: { type: 'list', of: { type: 'string' } },
   },
   computedFields: {
     url: {
