@@ -2,16 +2,20 @@ import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import ThemeProvider from './_components/theme-provider';
 import './globals.css';
+import { siteConfig } from '@/config/site.config';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Deer Doc',
-    template: '%s | Deer Doc',
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: '',
+  description: siteConfig.description,
   openGraph: {
-    title: 'Deer Doc',
-    description: '',
+    title: {
+      default: siteConfig.name,
+      template: `%s | ${siteConfig.name}`,
+    },
+    description: siteConfig.description,
   },
   twitter: {
     card: 'summary_large_image',

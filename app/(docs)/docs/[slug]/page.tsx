@@ -24,11 +24,11 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${doc.title} | ${siteConfig.name}`,
-    description: doc.description || '',
+    title: doc.title,
+    description: doc.description || siteConfig.description,
     openGraph: {
-      title: `${doc.title} | ${siteConfig.name}`,
-      description: doc.description || '',
+      title: doc.title,
+      description: doc.description || siteConfig.description,
       type: 'article',
       images: [
         {
