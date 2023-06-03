@@ -25,10 +25,10 @@ export async function generateMetadata({
 
   return {
     title: doc.title,
-    description: doc.description || '',
+    description: doc.description || siteConfig.description,
     openGraph: {
       title: doc.title,
-      description: doc.description,
+      description: doc.description || siteConfig.description,
       type: 'article',
       images: [
         {
@@ -88,12 +88,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <div className="md:w-[320px]">
-        <h2 className="text-muted-foreground mb-4">関連ツイート</h2>
-        <div className="space-y-6 text-sm">
-          {doc.tweets?.map((id) => (
-            <NextTweet key={id} id={id} />
-          ))}
-        </div>
+        {Boolean(doc.tweets?.length) && (
+          <>
+            <h2 className="text-muted-foreground mb-4">関連ツイート</h2>
+            <div className="space-y-6 text-sm">
+              {doc.tweets?.map((id) => (
+                <NextTweet key={id} id={id} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
