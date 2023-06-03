@@ -1,4 +1,4 @@
-export const DocMap = [
+export const docConfig = [
   {
     title: 'ドキュメント',
     items: ['installation', 'favicon', 'darkmode', 'email'],
@@ -9,7 +9,7 @@ export const DocMap = [
   },
 ];
 
-export const ShikiConfig = {
+export const shikiConfig = {
   darkTheme: 'min-dark',
   lightTheme: 'min-light',
   langs: ['js', 'ts', 'tsx', 'css', 'html', 'json', 'bash', 'md', 'mdx', 'ini'],

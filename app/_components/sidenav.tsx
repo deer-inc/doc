@@ -1,7 +1,7 @@
 'use client';
 
 import { allDocs } from '@/.contentlayer/generated';
-import { DocMap } from '@/doc.config';
+import { docConfig } from '@/doc.config';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,7 +10,7 @@ import React from 'react';
 export default function SideNav() {
   const pathname = usePathname();
 
-  const items = DocMap.map((section) => {
+  const items = docConfig.map((section) => {
     return (
       <div key={section.title}>
         <h2 className="text-sm font-semibold mb-2">{section.title}</h2>

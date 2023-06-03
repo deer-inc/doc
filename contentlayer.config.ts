@@ -5,7 +5,7 @@ import { codeImport } from 'remark-code-import';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { getHighlighter } from 'shiki';
-import { ShikiConfig } from './doc.config';
+import { shikiConfig } from './doc.config';
 
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',
@@ -27,8 +27,8 @@ export const Doc = defineDocumentType(() => ({
 
 const shikiOptions: Partial<Options> = {
   theme: {
-    darkCode: ShikiConfig.darkTheme,
-    lightCode: ShikiConfig.lightTheme,
+    darkCode: shikiConfig.darkTheme,
+    lightCode: shikiConfig.lightTheme,
   },
   keepBackground: false,
 
@@ -42,7 +42,7 @@ const shikiOptions: Partial<Options> = {
   getHighlighter: (options: any) =>
     getHighlighter({
       ...options,
-      langs: ShikiConfig.langs,
+      langs: shikiConfig.langs,
     }),
 };
 
