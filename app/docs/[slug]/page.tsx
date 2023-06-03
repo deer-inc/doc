@@ -1,5 +1,6 @@
 import LinkTitle from '@/app/_components/link-title';
 import MdxComponent from '@/app/_components/mdx-component';
+import { siteConfig } from '@/site.config';
 import { allDocs } from 'contentlayer/generated';
 import { format } from 'date-fns';
 import { notFound } from 'next/navigation';
@@ -8,6 +9,40 @@ export async function generateStaticParams() {
   return allDocs.map((doc) => ({
     slug: doc._raw.flattenedPath,
   }));
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
+  const doc = allDocs.find((doc) => doc._raw.flattenedPath === slug);
+
+  if (!doc) {
+    return {};
+  }
+
+  return {
+    title: doc.title,
+    description: doc.description || '',
+    openGraph: {
+      title: doc.title,
+      description: doc.description,
+      type: 'article',
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      creator: siteConfig.creator,
+    },
+  };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {

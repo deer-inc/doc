@@ -13,6 +13,7 @@ export const Doc = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    description: { type: 'string' },
     date: { type: 'date', required: true },
     links: { type: 'list', of: { type: 'string' } },
   },
