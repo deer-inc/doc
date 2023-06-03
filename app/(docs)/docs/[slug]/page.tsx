@@ -53,7 +53,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="prose prose-h2:mt-16 prose-img:rounded-md prose-sm prose-code:text-sm prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent prose-code:before:hidden prose-code:after:hidden">
+    <div className="prose md:prose-h2:mt-16 prose-img:rounded-md prose-sm prose-code:text-sm prose-pre:bg-transparent max-w-full dark:prose-invert prose-pre:border !prose-pre:bg-transparent prose-code:before:hidden prose-code:after:hidden">
       <div className="italic text-muted-foreground justify-end not-prose text-sm flex items-center gap-2">
         <p>{format(new Date(doc.date), 'yyyy年MM月dd日更新')}</p>
         <span>/</span>
@@ -64,7 +64,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           編集
         </a>
       </div>
-      <h1>{doc.title}</h1>
+      <h1 className="mt-3 md:mt-0">{doc.title}</h1>
       <MdxComponent code={doc.body.code} />
 
       {Boolean(doc.links?.length) && (

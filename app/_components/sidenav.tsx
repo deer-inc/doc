@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-export default function SideNav() {
+export default function SideNav({ onClick }: { onClick?: () => void }) {
   const pathname = usePathname();
 
   const items = docConfig.map((section) => {
@@ -19,6 +19,7 @@ export default function SideNav() {
             return (
               <li key={slug}>
                 <Link
+                  onClick={onClick}
                   href={`/docs/${slug}`}
                   className={cn(
                     'border-l px-4 py-1.5 block text-sm',
