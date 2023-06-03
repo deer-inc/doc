@@ -3,6 +3,7 @@ import MdxComponent from '@/app/_components/mdx-component';
 import { siteConfig } from '@/config/site.config';
 import { allDocs } from 'contentlayer/generated';
 import { format } from 'date-fns';
+import { ResolvingMetadata } from 'next';
 import { NextTweet } from 'next-tweet';
 import { notFound } from 'next/navigation';
 
@@ -12,12 +13,16 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata(
+  {
+    params: { slug },
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+) {
   const doc = allDocs.find((doc) => doc._raw.flattenedPath === slug);
+  const parentMeta = await parent;
 
   if (!doc) {
     return {};
@@ -27,11 +32,13 @@ export async function generateMetadata({
     title: doc.title,
     description: doc.description || siteConfig.description,
     openGraph: {
+      ...parentMeta.openGraph,
       title: doc.title,
       description: doc.description || siteConfig.description,
       type: 'article',
     },
     twitter: {
+      ...parentMeta.twitter,
       card: 'summary_large_image',
       creator: siteConfig.creator,
     },
