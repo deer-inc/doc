@@ -2,12 +2,16 @@ import SideNav from '@/app/_components/sidenav';
 import ToggleThemeButton from '@/app/_components/toggle-theme';
 import { SiTwitter } from '@icons-pack/react-simple-icons';
 import Logo from '@/app/_components/logo';
+import MobileNav from '@/app/_components/mobile-nav';
 
 export default function DocLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div className="container max-w-4xl flex gap-10 my-10">
-        <aside className="w-[240px]">
+      <div className="md:hidden">
+        <MobileNav />
+      </div>
+      <div className="container flex gap-10 md:my-10">
+        <aside className="w-[240px] hidden md:block">
           <div className="flex items-center justify-between mb-10">
             <Logo />
             <ToggleThemeButton />

@@ -1,16 +1,16 @@
 'use client';
 
 import { allDocs } from '@/.contentlayer/generated';
-import { DocMap } from '@/doc.config';
+import { docConfig } from '@/config/doc.config';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-export default function SideNav() {
+export default function SideNav({ onClick }: { onClick?: () => void }) {
   const pathname = usePathname();
 
-  const items = DocMap.map((section) => {
+  const items = docConfig.map((section) => {
     return (
       <div key={section.title}>
         <h2 className="text-sm font-semibold mb-2">{section.title}</h2>
@@ -19,6 +19,7 @@ export default function SideNav() {
             return (
               <li key={slug}>
                 <Link
+                  onClick={onClick}
                   href={`/docs/${slug}`}
                   className={cn(
                     'border-l px-4 py-1.5 block text-sm',

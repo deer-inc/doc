@@ -6,9 +6,6 @@ export default function RootPage() {
       <p>
         <Link href="/docs">docs</Link>
       </p>
-      <p>
-        <Link href="/live">live</Link>
-      </p>
     </div>
   );
 }

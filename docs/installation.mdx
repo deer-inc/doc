@@ -1,8 +1,8 @@
 ---
 title: 環境構築
 date: 2023-06-01
-links:
-  - https://twitter.com/d151005/status/1662762712814714881?s=20
+tweets:
+  - '1662762712814714881'
 ---
 
 ストレージ効率が圧倒的に良いので [pnpm](https://pnpm.io) を使う。
@@ -33,3 +33,17 @@ pnpm dlx create-next-app@latest
   // ...
 }
 ```
+
+Tailwind CSS デフォルトフォントの場合、Chrome と Safari で表示上の文字サイズが異なるため、日本語フォントを設定する。
+
+```css title="globals.css"
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+}
+```
+
+以下の対応を行う
+
+- `app/layout.tsx` の `html` を `lang="ja"` に変更
+- `app/` ディレクトリから不要な vercel ロゴ画像などを削除
