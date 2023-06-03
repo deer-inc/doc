@@ -30,14 +30,6 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description || siteConfig.description,
       type: 'article',
-      images: [
-        {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
