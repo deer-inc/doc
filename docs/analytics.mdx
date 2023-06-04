@@ -1,0 +1,36 @@
+---
+title: Analytics
+date: 2023-06-04
+tweets:
+  - '1664129399342649344'
+links:
+  - 'https://vercel.com/docs/concepts/analytics/quickstart'
+---
+
+Vercel Analytics を使う。
+
+```bash
+pnpm add @vercel/analytics
+```
+
+```tsx {1, 15} title="app/layout.tsx"
+import { Analytics } from '@vercel/analytics/react';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html>
+      <head>
+        <title>Next.js</title>
+      </head>
+      <body>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
+}
+```
