@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import { useRef, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
-import Dropzone, { useDropzone } from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 
 type Props = {
   aspectRatio?: number;
@@ -26,6 +26,7 @@ export default function ImageCropper({ aspectRatio = 1, width }: Props) {
     },
     onDropAccepted: (dropped) => {
       setImage(dropped[0]);
+      setScale(1.0);
       setOpen(true);
     },
   });
