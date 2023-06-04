@@ -37,11 +37,6 @@ export async function generateMetadata(
       description: doc.description || siteConfig.description,
       type: 'article',
     },
-    twitter: {
-      ...parentMeta.twitter,
-      card: 'summary_large_image',
-      creator: siteConfig.creator,
-    },
   };
 }
 

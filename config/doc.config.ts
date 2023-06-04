@@ -1,7 +1,7 @@
 export const docConfig = [
   {
     title: 'ドキュメント',
-    items: ['installation', 'favicon', 'darkmode', 'email'],
+    items: ['installation', 'favicon', 'meta', 'darkmode', 'email'],
   },
   {
     title: 'コンポーネント',

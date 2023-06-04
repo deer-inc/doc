@@ -1,0 +1,76 @@
+---
+title: Meta
+date: 2023-06-04
+tweets:
+  - '1665148297965867008'
+  - '1661950256903512064'
+  - '1665148299802996736'
+links:
+  - 'https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image'
+  - 'https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function'
+  - 'https://vercel.com/changelog/open-graph-link-sharing-inspector'
+---
+
+以下のようにすることで `xxx | サイト名` というタイトルに統一できる。
+
+```tsx title="layout.tsx"
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: {
+      default: siteConfig.name,
+      template: `%s | ${siteConfig.name}`,
+    },
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
+};
+```
+
+動的 URL の場合は、`generateMetadata`を使う。
+
+```tsx title="posts/[slug]/page.tsx"
+export async function generateMetadata(
+  {
+    params: { slug },
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+) {
+  const doc = allDocs.find((doc) => doc._raw.flattenedPath === slug);
+  const parentMeta = await parent;
+
+  if (!doc) {
+    return {};
+  }
+
+  return {
+    title: doc.title,
+    description: doc.description || siteConfig.description,
+    openGraph: {
+      ...parentMeta.openGraph,
+      title: doc.title,
+      description: doc.description || siteConfig.description,
+      type: 'article',
+    },
+  };
+}
+```
+
+`/app` に `opengraph-image.png(jpg)` という名前でファイルを設置すると勝手に OG イメージに必要なタグを実装してくれる。
+
+OG Image は以下がベストプラクティス。
+
+フレーム: 1200px x 630px
+コンテンツ: 630px x 630px
+
+Vercel ダッシュボードの Deploy からデプロイアイテムをクリックすると、Vercel ダッシュボード上から OG Image の確認できる。
