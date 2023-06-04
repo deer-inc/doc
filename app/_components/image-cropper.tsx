@@ -19,6 +19,7 @@ export default function ImageCropper({ aspectRatio = 1, width }: Props) {
   const [preview, setPreview] = useState<string>();
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     noKeyboard: true,
+    maxSize: 1024 * 1024 * 2,
     accept: {
       'image/jpeg': [],
       'image/png': [],
