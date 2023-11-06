@@ -1,12 +1,11 @@
-import ogs from 'open-graph-scraper';
+import { unfurl } from 'unfurl.js';
 
 export default async function LinkPreview({ url }: { url: string }) {
   try {
-    const { result } = await ogs({
-      url,
-    });
+    const result = await unfurl(url);
 
-    const imageURL = result.ogImage?.[0].url || result.twitterImage?.[0].url;
+    const imageURL =
+      result.open_graph.images?.[0].url || result.twitter_card?.images?.[0].url;
 
     return (
       <div className="overflow-hidden not-prose relative rounded-lg border p-4">
@@ -16,11 +15,13 @@ export default async function LinkPreview({ url }: { url: string }) {
         <div className="flex-1">
           <h3 className="font-bold text-lg mb-2">
             <a href={url} target="_blank">
-              {result.ogTitle}
+              {result.open_graph.title || result.title}
               <span className="absolute inset-0" />
             </a>
           </h3>
-          <p className="text-muted-foreground">{result.ogDescription}</p>
+          <p className="text-muted-foreground">
+            {result.open_graph.description}
+          </p>
           <p className="text-sm text-muted-foreground/60 mt-4">{url}</p>
         </div>
       </div>
