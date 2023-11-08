@@ -4,7 +4,7 @@ import { siteConfig } from '@/config/site.config';
 import { allDocs } from 'contentlayer/generated';
 import { format } from 'date-fns';
 import { ResolvingMetadata } from 'next';
-import { NextTweet } from 'next-tweet';
+import { Tweet } from 'react-tweet';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -87,7 +87,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <h2 className="text-muted-foreground mb-4">関連ツイート</h2>
             <div className="space-y-6 text-sm">
               {doc.tweets?.map((id) => (
-                <NextTweet key={id} id={id} />
+                <Tweet key={id} id={id} />
               ))}
             </div>
           </>

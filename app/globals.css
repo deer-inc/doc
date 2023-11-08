@@ -108,7 +108,7 @@ pre > code > * {
   display: none;
 }
 
-body .next-tweet-theme {
+body .react-tweet-theme {
   --tweet-container-margin: 0;
   --tweet-header-font-size: 1em;
   --tweet-body-font-size: 1em;

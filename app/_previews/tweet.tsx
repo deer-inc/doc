@@ -1,5 +1,5 @@
-import { NextTweet } from 'next-tweet';
+import { Tweet } from 'react-tweet';
 
-export default function Tweet() {
-  return <NextTweet id="1663725517143703552" />;
+export default function TweetPreview() {
+  return <Tweet id="1663725517143703552" />;
 }

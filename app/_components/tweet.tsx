@@ -1,5 +1,5 @@
-import { NextTweet } from 'next-tweet';
+import { Tweet } from 'react-tweet';
 
-export default function Tweet({ id }: { id: string }) {
-  return <NextTweet id={id} />;
+export default function TweetComponent({ id }: { id: string }) {
+  return <Tweet id={id} />;
 }
